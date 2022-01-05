@@ -18,7 +18,7 @@ mybatis-generator扩展插件，新增多种方法，完善插件功能
             <dependency>
                 <groupId>com.nagisazz</groupId>
                 <artifactId>mybatis-generator-plus</artifactId>
-                <version>1.1</version>
+                <version>1.0.0</version>
             </dependency>
         </dependencies>
       </plugin>
