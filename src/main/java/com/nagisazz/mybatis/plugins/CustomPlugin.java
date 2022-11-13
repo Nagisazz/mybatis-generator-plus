@@ -50,7 +50,14 @@ public class CustomPlugin extends PluginAdapter {
 		topLevelClass.addAnnotation("@NoArgsConstructor");
 		topLevelClass.addAnnotation("@AllArgsConstructor");
 		String tableName = introspectedTable.getFullyQualifiedTable().getIntrospectedTableName();
-		topLevelClass.addFileCommentLine("@DictTable(key=\"dbyw" + tableName.replace("_", "") + "\", " +
+		String schema = introspectedTable.getTableConfiguration().getSchema();
+		if (schema != null && !"".equals(schema)) {
+			schema = schema.replace("_", "");
+		}else {
+			schema = "";
+		}
+		topLevelClass.addAnnotation("@DictTable(key=\"" + schema +
+				tableName.replace("_", "") + "\", " +
 				"tableName=\"" + tableName + "\", showName=\"" + tableName.toUpperCase() + "\", desc=\"" +
 				introspectedTable.getRemarks() + "\")");
 		return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
